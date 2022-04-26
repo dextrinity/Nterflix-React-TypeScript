@@ -1,3 +1,18 @@
+export interface Trending {
+    page: number;
+    results: results[];
+}
+
+export interface results {
+    id: number;
+    title: string;
+    release_date: string;
+    popularity: number;
+    poster_path: string;
+    media_type: string;
+}
+
+
 export interface Series {
     id: number;
     name: string;
@@ -6,7 +21,7 @@ export interface Series {
 }
 
 export interface Episode {
-    id: number;
+    id: string;
     air_date: string;
     crew: Crew[];
     guest_stars: GuestStars[];
@@ -27,6 +42,8 @@ export interface Crew {
 }
 
 export interface GuestStars {
-    id: number
+    id: number;
     original_name: string;
+    profile_path: null;
+    character: string;
 }

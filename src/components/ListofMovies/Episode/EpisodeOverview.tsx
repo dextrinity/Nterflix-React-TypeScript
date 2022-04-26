@@ -1,11 +1,12 @@
-import { faStar } from "@fortawesome/free-solid-svg-icons";
-import ReactStars from "react-rating-stars-component";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
-import { Episode } from "../../models/series";
-import "./EpisodeOverview.css";
 
+import ReactStars from "react-rating-stars-component";
+import React, { useState } from "react";
+import { Episode } from "../../../models/series";
+import "./EpisodeOverview.css";
+// import DefaulImage from './DefaultImage.jpeg';
 const BIGIMG_URL = "https://www.themoviedb.org/t/p/original";
+const GUESTIMG_URL = "https://www.themoviedb.org/t/p/w276_and_h350_face/";
+const defaulmage = "https://i1.wp.com/www.baytekent.com/wp-content/uploads/2016/12/facebook-default-no-profile-pic1.jpg?ssl=1"
 
 interface OverviewProps {
   overview: Episode;
@@ -25,18 +26,37 @@ const EpisodeOverview = (props: OverviewProps) => {
     vote_average,
   } = props.overview;
 
+
+
   const director = crew.find((c) => c.job === "Director");
   const writer = crew.find((c) => c.job === "Writer");
   const guest = guest_stars.map((c) => (
-    <li key={c.original_name}>{c.original_name}</li>
+    <div className="overAllGuest">
+    <div className="guestContent">
+      <img
+        className="guestImage"
+        src={GUESTIMG_URL + c.profile_path}
+        alt={c.original_name} onError={({ currentTarget }) => {
+          currentTarget.src=`${defaulmage}`
+        }}
+      ></img>
+      <div className="guestDetails"></div>
+      <div className="charName">
+      <p className="orignalName" key={c.original_name}>{c.original_name.split(" ")[0] + " " + c.original_name.split(" ")[1]}</p>
+      <p className="character"key={c.character}>"{c.character.split(" ")[0]}"</p>
+      </div>
+    </div>
+    </div>
   ));
+
 
   const rateVote = (vote_average / 10) * 5;
 
   const [expanded, setExpanded] = useState(false);
-  const dataForDisplay = expanded ? guest : guest.slice(0, 5);
+  const dataForDisplay = expanded ? guest : guest.slice(0, 8);
 
   return (
+    <div>
     <div className="frame2">
       <img
         id={"bigimage" + id}
@@ -63,7 +83,7 @@ const EpisodeOverview = (props: OverviewProps) => {
         <p className="spacer2">{air_date}</p>
       </div>
       <div>
-        <p>{overview}</p>
+        <p className="overview">{overview}</p>
       </div>
       <div className="member">
         <div id={"crew" + id} className="crew">
@@ -75,22 +95,26 @@ const EpisodeOverview = (props: OverviewProps) => {
           <p>{writer.original_name}</p>
         </div>
       </div>
-      <div className="cast">
-        <p className="titleColor">Cast:</p>
-        <ul id="datalist" className="list">
+    
           <div className="main-div">
+            
             {dataForDisplay.map((event, index) => (
               <div key={index} className="child-div">
                 {event}
+            
               </div>
+              
+              
             ))}
-            <span className="fullCast" onClick={() => setExpanded(!expanded)}>
+        
+
+            </div>
+            <div className="fullCast" onClick={() => setExpanded(!expanded)}>
               {expanded ? "Show Less" : "Show More"}
-            </span>
-          </div>
-        </ul>
-      </div>
+            </div>
+            </div>
     </div>
+    
   );
 };
 
