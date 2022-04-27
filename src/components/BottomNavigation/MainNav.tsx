@@ -46,7 +46,6 @@ export default function SimpleBottomNavigation() {
     if (value === 0) history("/");
     else if (value === 1) history("/movies");
     else if (value === 2) history("/tvshows");
-    else if (value === 3) history("/search");
 
   }
 
@@ -69,7 +68,6 @@ export default function SimpleBottomNavigation() {
         <CustomizedNavAction label="Trending" icon={<WhatshotIcon />} />
         <CustomizedNavAction label="Movies" icon={<MovieIcon />} />
         <CustomizedNavAction label="TV Shows" icon={<LiveTvIcon />} />
-        <CustomizedNavAction label="Search" icon={<SearchIcon />} />
       </CustomizedNav>
       // </Box>
   );

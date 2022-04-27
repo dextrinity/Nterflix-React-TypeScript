@@ -98,6 +98,7 @@ const EpisodeList = () => {
   };
 
   return (
+    <>
     <div className="main-frame">
       <div className="content">
         <SeasonContent />
@@ -118,6 +119,7 @@ const EpisodeList = () => {
         <EpisodeOverview key={selectedEpisode.id} overview={selectedEpisode} />
       )}
     </div>
+    </>
   );
 };
 

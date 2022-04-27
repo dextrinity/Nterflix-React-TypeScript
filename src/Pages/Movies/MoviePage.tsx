@@ -1,12 +1,12 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import PageHeader from "../../components/Header/PageHeader";
 import SingleContent from "../../components/SingleContent/SingleContent";
 import { Trending } from "../../models/series";
-const base_API = "https://api.themoviedb.org/3/trending/tv/day?api_key=580e60a52ac48c49cfd3ca83ce561599"
+const base_API = "https://api.themoviedb.org/3/trending/movie/day?api_key=580e60a52ac48c49cfd3ca83ce561599"
 
 
-const TVShows = () => {
+const MoviePage = () => {
   const [content, setContent] = useState<Trending>();
 
   useEffect(() => {
@@ -36,4 +36,4 @@ const TVShows = () => {
   );
 };
 
-export default TVShows;
+export default MoviePage;

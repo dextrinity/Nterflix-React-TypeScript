@@ -1,14 +1,12 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 // import EpisodeList from './components/ListofMovies/Episode/EpisodeList';
 import HeaderContent from "./components/Header/HeaderContent";
-import SimpleBottomNavigation from './components/BottomNavigation/MainNav';
+// import SimpleBottomNavigation from './components/BottomNavigation/MainNav';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Container } from '@mui/material';
 import Trending from './Pages/Trending/TrendingPage';
 import TVShows from './Pages/TVShows/TVShows';
-import Search from './Pages/Search/Search';
-import Movies from './Pages/Movies/Movies';
+import Movies from './Pages/Movies/MoviePage';
 import EpisodeList from './components/ListofMovies/Episode/EpisodeList';
 import MovieList from './components/ListofMovies/Movie/MovieList';
 
@@ -29,14 +27,14 @@ function App() {
             <Route path='/' element={<Trending />} />
             <Route path='/movies' element={<Movies />}/>
             <Route path='/tvshows' element={<TVShows />}/>
-            <Route path='/search' element={<Search />}/>
+            {/* <Route path='/search' element={<Search />}/> */}
             <Route path='/tv/:tvId' element={<EpisodeList />}/>
-            {/* <Route path='/movie/:movieId' element={<MovieList />}/> */}
+            <Route path='/movie/:movieId' element={<MovieList />}/>
           </Routes>
         
         </div>
 
-    <SimpleBottomNavigation />
+    {/* <SimpleBottomNavigation /> */}
     {/* </div> */}
     </BrowserRouter>
     </div>

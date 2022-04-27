@@ -1,5 +1,4 @@
 import React from "react";
-import { getMovie, getTV } from "../../apis/MovieDbApi";
 import { results } from "../../models/series";
 import "./SingleContent.css";
 import { useNavigate } from 'react-router-dom'
@@ -11,7 +10,7 @@ interface ContentProps {
 }
 
 const SingleContent = (props: ContentProps) => {
-  const { id, title, release_date, popularity, poster_path, media_type } =
+  const { id, title, release_date, poster_path, media_type } =
     props.trendingDetails;
 
   const getTrending = (

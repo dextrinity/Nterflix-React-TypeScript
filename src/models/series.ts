@@ -10,6 +10,9 @@ export interface results {
     popularity: number;
     poster_path: string;
     media_type: string;
+    name: string
+    overview: string
+    vote_average: number
 }
 
 
