@@ -2,10 +2,7 @@
 import ReactStars from "react-rating-stars-component";
 import React, { useState } from "react";
 import { Episode } from "../../../models/series";
-import apiConfig from "../../../apis/apiConfig";
-import './TVEpisode.scss'
-import unknown from '../../../assets/unknown.jpg'
-
+import "./EpisodeOverview.css";
 // import DefaulImage from './DefaultImage.jpeg';
 const BIGIMG_URL = "https://www.themoviedb.org/t/p/original";
 const GUESTIMG_URL = "https://www.themoviedb.org/t/p/w276_and_h350_face/";
@@ -59,44 +56,36 @@ const EpisodeOverview = (props: OverviewProps) => {
   const dataForDisplay = expanded ? guest : guest.slice(0, 8);
 
   return (
-    <>
-      <div
-        className="bannerEpisode"
-        style={{
-          backgroundImage: `url(${apiConfig.originalImage(
-            still_path
-          )})`,
-        }}
-      ></div>
-      <div className="mb-3 movie-content container">
-        <div className="movie-content__poster">
-          <div
-            className="movie-content__poster__img"
-            style={{
-              backgroundImage: `url(${apiConfig.originalImage(
-                still_path
-              )})`,
-            }}
-          ></div>
-        </div>
-        <div className="movie-content__info">
-          <h1 className="title">{name}</h1>
-      
-          <ReactStars
-              count={5}
-              value={rateVote}
-              size={24}
-              isHalf={true}
-              emptyIcon={<i className="far fa-star"></i>}
-              halfIcon={<i className="fa fa-star-half-alt"></i>}
-              fullIcon={<i className="fa fa-star"></i>}
-              activeColor="#F4C243"
-            />
-          <p className="overview">{overview}</p>
-          
-          <div className="cast">
-            
-            <div className="member">
+    <div>
+    <div className="frame2">
+      <img
+        id={"bigimage" + id}
+        className="image2"
+        src={BIGIMG_URL + still_path}
+        alt={name}
+      ></img>
+
+      <ReactStars
+        count={5}
+        value={rateVote}
+        size={24}
+        isHalf={true}
+        emptyIcon={<i className="far fa-star"></i>}
+        halfIcon={<i className="fa fa-star-half-alt"></i>}
+        fullIcon={<i className="fa fa-star"></i>}
+        activeColor="#F4C243"
+      />
+
+      <p className="title2">{name}</p>
+      <div className="status">
+        <p className="spacer2">Season {season_number}</p>
+        <p className="spacer2">Episode {episode_number}</p>
+        <p className="spacer2">{air_date}</p>
+      </div>
+      <div>
+        <p className="overview">{overview}</p>
+      </div>
+      <div className="member">
         <div id={"crew" + id} className="crew">
           <div id={"director" + id} className="directors"></div>
           <p className="titleColor">Directed By</p>
@@ -106,25 +95,26 @@ const EpisodeOverview = (props: OverviewProps) => {
           <p>{writer.original_name}</p>
         </div>
       </div>
-      <div className="casts">
-          
+    
+          <div className="main-div">
+            
             {dataForDisplay.map((event, index) => (
               <div key={index} className="child-div">
-                {event}   
+                {event}
+            
               </div>
+              
+              
             ))}
-
-           
         
-    </div>
-  
-            {/* <div className="fullCast" onClick={() => setExpanded(!expanded)}>
+
+            </div>
+            <div className="fullCast" onClick={() => setExpanded(!expanded)}>
               {expanded ? "Show Less" : "Show More"}
-            </div> */}
             </div>
             </div>
     </div>
-    </>
+    
   );
 };
 

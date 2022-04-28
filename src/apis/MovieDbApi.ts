@@ -34,3 +34,23 @@ export function getMovie(movieId:number) {
       }
     });
   }
+
+  export function getMovieCredit(movieId:number) {
+    return axios({
+      method: 'get',
+      url: `${BASE_URL}/movie/${movieId}/credits`,
+      params: {
+        "api_key": API_KEY
+    }
+    });
+  }
+
+  export function getTVCredit(movieId:number) {
+    return axios({
+      method: 'get',
+      url: `${BASE_URL}/tv/${movieId}`,
+      params: {
+        "api_key": API_KEY
+    }
+    });
+  }

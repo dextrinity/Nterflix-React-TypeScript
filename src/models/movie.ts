@@ -10,7 +10,14 @@ export interface MovieModel {
     vote_count: number;
     vote_average: number;
     tagline: string;
+    backdrop_path: string;
+    genres: Genres[];
 
+}
+
+export interface Genres {
+    id: number;
+    name: string;
 }
 
 export interface Credit {

@@ -8,11 +8,13 @@ import EpisodeOverview from "./EpisodeOverview";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import SeasonContent from "../../Season/SeasonContent";
+import SeasonContent from "../../Title/Title";
 
 import { useParams } from "react-router-dom";
 import { getSeason, getTV } from "../../../apis/MovieDbApi";
 import { TV } from "../../../models/tv";
+import apiConfig from "../../../apis/apiConfig";
+import Title from '../../Title/Title'
 
 
 
@@ -28,6 +30,7 @@ const EpisodeList = () => {
       getSeason(tvData.id, 1).then((response) => {
         const postData: Series = response.data;
         setPost(postData); 
+        console.log(postData)
       });
     });
   }, [tvId]);
@@ -100,8 +103,8 @@ const EpisodeList = () => {
   return (
     <>
     <div className="main-frame">
+    <div className="bannerHeader"></div>
       <div className="content">
-        <SeasonContent />
         <div className="episodeList">
           <Slider {...settings}>
             {post?.episodes.map((ep) => (
