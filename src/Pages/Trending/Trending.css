@@ -1,0 +1,9 @@
+.trending {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.main-content {
+    margin-bottom: 2%;
+}

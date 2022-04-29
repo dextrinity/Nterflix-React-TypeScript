@@ -1,0 +1,9 @@
+.slick-list {
+    border-top: 2px solid grey;
+    border-bottom: 2px solid grey;  
+transform: 0;
+}
+
+.slick-prev {
+    font-size: 30px;
+}

@@ -1,23 +1,42 @@
 import React from 'react';
-import './App.css';
-import EpisodeList from './components/Episode/EpisodeList';
-import HeaderContent from './components/Header/HeaderContent';
-import SeasonContent from './components/Season/SeasonContent';
+import './App.scss';
+// import EpisodeList from './components/ListofMovies/Episode/EpisodeList';
+import HeaderContent from "./components/Header/HeaderContent";
+// import SimpleBottomNavigation from './components/BottomNavigation/MainNav';
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Trending from './Pages/Trending/TrendingPage';
+import TVShows from './Pages/TVShows/TVShows';
+import Movies from './Pages/Movies/MoviePage';
+import EpisodeList from './components/ListofMovies/Episode/EpisodeList';
+import MovieList from './components/ListofMovies/Movie/MovieList';
+
+
+
+
 
 function App() {
   return (
     <div className="App">
-      <div>
-        <HeaderContent />
-      </div>
-      <div className="content">
-          <SeasonContent />
+      <BrowserRouter>
+      <HeaderContent />
+
+        
           <div className="container">
-            <EpisodeList />
-            </div>
+      
+          <Routes>
+            <Route path='/' element={<Trending />} />
+            <Route path='/movies' element={<Movies />}/>
+            <Route path='/tvshows' element={<TVShows />}/>
+            {/* <Route path='/search' element={<Search />}/> */}
+            <Route path='/tv/:tvId' element={<EpisodeList />}/>
+            <Route path='/movie/:movieId' element={<MovieList />}/>
+          </Routes>
+        
         </div>
 
-
+    {/* <SimpleBottomNavigation /> */}
+    {/* </div> */}
+    </BrowserRouter>
     </div>
 
   );
