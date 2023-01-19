@@ -5,7 +5,6 @@ import React from "react";
 import { Episode } from "../../../models/series";
 import "./EpisodeDetails.css";
 import notAvailable from '../../../assets/not-available.jpeg'
-import { width } from "@mui/system";
 
 const IMG_URL = "https://image.tmdb.org/t/p/w227_and_h127_bestv2";
 
@@ -16,7 +15,7 @@ interface EpisodeProps {
 }
 
 const EpisodeDetails = (props: EpisodeProps) => {
-  const { name, still_path, id, air_date, vote_average} = props.epDetails;
+  const { name, still_path, id, air_date, vote_average, episode_number} = props.epDetails;
   const rateVote = (vote_average / 10) * 5;
 
 
@@ -41,10 +40,10 @@ const EpisodeDetails = (props: EpisodeProps) => {
           currentTarget.src=`${notAvailable}`
         }}
       ></img>
-      <p id={"title" + id} className="title" onClick = {handleOverview}>
+      <p id={"title" + id} className="title" onClick = {handleOverview} >
         {name}
       </p>
-      <p className="minutes">{air_date}</p>
+      <p className="minutes">Episode {episode_number}</p>
       <p className="rate">{rateVote.toFixed(1)}
           <FontAwesomeIcon className="checked" icon={faStar}></FontAwesomeIcon>
       </p>

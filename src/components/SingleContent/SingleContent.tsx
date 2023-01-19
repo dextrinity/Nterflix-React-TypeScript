@@ -22,10 +22,10 @@ const SingleContent = (props: ContentProps) => {
       // getTV(id).then((response) => {
       //   console.log(response.data);
       // });
-      history(`/tv/${id}`);
+      history(`/tvshows/${id}`);
     } else {
       // getMovie(id).then((response) => {
-        history(`/movie/${id}`)
+        history(`/movies/${id}`)
       // });
     }
     console.log(id);
@@ -50,6 +50,7 @@ const SingleContent = (props: ContentProps) => {
         {media_type === "tv" ? "TV Series" : "Movie"}
         <span className="underTitle">{release_date}</span>
       </span>
+      
     </div>
   );
 };

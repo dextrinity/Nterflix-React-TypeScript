@@ -20,6 +20,7 @@ export interface Series {
     id: number;
     name: string;
     episodes: Episode[];
+    seasons: Seasons[];
 
 }
 
@@ -34,9 +35,16 @@ export interface Episode {
     vote_average: number;
     episode_number: number;
     season_number: number;
-    duration?: number;
+    
+
 
 } 
+
+export interface Seasons {
+    name: string;
+    id: number;
+    poster_path: string;
+}
 
 export interface Crew {
     id: number

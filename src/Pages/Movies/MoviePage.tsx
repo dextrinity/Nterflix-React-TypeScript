@@ -25,7 +25,7 @@ const MoviePage = () => {
   <div className="main-content">
     
     <div>
-      <span className="pageTitle">Trending Movies</span>
+      <span className="pageTitle">Movies</span>
     </div>
     <div className="trending">
       {content && content?.results.map((c) => <SingleContent key={c.id} trendingDetails={c}   />)}

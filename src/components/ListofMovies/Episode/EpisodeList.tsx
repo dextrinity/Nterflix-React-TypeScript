@@ -8,14 +8,12 @@ import EpisodeOverview from "./EpisodeOverview";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import SeasonContent from "../../Title/Title";
 
 import { useParams } from "react-router-dom";
 import { getSeason, getTV } from "../../../apis/MovieDbApi";
 import { TV } from "../../../models/tv";
-import apiConfig from "../../../apis/apiConfig";
-import Title from '../../Title/Title'
 
+import './TVEpisode.scss'
 
 
 const EpisodeList = () => {
@@ -30,7 +28,9 @@ const EpisodeList = () => {
       getSeason(tvData.id, 1).then((response) => {
         const postData: Series = response.data;
         setPost(postData); 
+        setSelectedEpisode(postData.episodes[0])
         console.log(postData)
+        console.log(tvData)
       });
     });
   }, [tvId]);
@@ -48,57 +48,50 @@ const EpisodeList = () => {
     initialSlide: 0,
     responsive: [
       {
-        breakpoint: 1600,
+        breakpoint: 1800,
+        settings: {
+          slidesToShow: 6,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 1024,
         settings: {
           slidesToShow: 5,
           slidesToScroll: 1,
           infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 1350,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 1100,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true,
-        },
+          dots: true
+        }
       },
       {
         breakpoint: 800,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 4,
           slidesToScroll: 1,
-          initialSlide: 5,
-        },
+          infinite: true,
+          dots: true
+        }
       },
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
+          slidesToShow: 3,
+          slidesToScroll: 2,
           initialSlide: 2,
-        },
+        }
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
+ 
 
   return (
     <>
@@ -106,7 +99,7 @@ const EpisodeList = () => {
     <div className="bannerHeader"></div>
       <div className="content">
         <div className="episodeList">
-          <Slider {...settings}>
+        <Slider {...settings}>
             {post?.episodes.map((ep) => (
               <EpisodeDetails
                 key={ep.id}
@@ -114,10 +107,9 @@ const EpisodeList = () => {
                 handleOverviewClick={handleOverviewClick}
               />
             ))}
-          </Slider>
+         </Slider>
         </div>
       </div>
-
       {selectedEpisode && (
         <EpisodeOverview key={selectedEpisode.id} overview={selectedEpisode} />
       )}
@@ -127,3 +119,5 @@ const EpisodeList = () => {
 };
 
 export default EpisodeList;
+
+ 

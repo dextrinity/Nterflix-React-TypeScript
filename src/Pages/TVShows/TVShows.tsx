@@ -25,7 +25,7 @@ const TVShows = () => {
   <div className="main-content">
     
     <div>
-      <span className="pageTitle">Trending Movies</span>
+      <span className="pageTitle">TV Series</span>
     </div>
     <div className="trending">
       {content && content?.results.map((c) => <SingleContent key={c.id} trendingDetails={c}   />)}

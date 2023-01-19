@@ -28,8 +28,8 @@ function App() {
             <Route path='/movies' element={<Movies />}/>
             <Route path='/tvshows' element={<TVShows />}/>
             {/* <Route path='/search' element={<Search />}/> */}
-            <Route path='/tv/:tvId' element={<EpisodeList />}/>
-            <Route path='/movie/:movieId' element={<MovieList />}/>
+            <Route path='/tvshows/:tvId' element={<EpisodeList />}/>
+            <Route path='/movies/:movieId' element={<MovieList />}/>
           </Routes>
         
         </div>
